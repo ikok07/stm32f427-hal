@@ -25,24 +25,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d362c2b-836b-4b2c-a12d-dcb648152caa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/stm32f427-digital-potentiometer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/encoder.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/error.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/system_config.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assert.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/encoder.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/error.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/msp/tim_msp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/stm32f407-hal.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_rtc.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_rtc_ex.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_rtc.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_rtc_ex.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/system_config.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/system_config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_adc.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_adc_ex.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_conf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_i2c.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_i2c_ex.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_ll_adc.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_adc.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_adc_ex.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_i2c.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_i2c_ex.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_ll_adc.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/encoder.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/encoder.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stm32fxxx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/stm32fxxx_it.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/kok/CLionProjects/stm32f427-digital-potentiometer",
+    "last_opened_file_path": "/Users/kok/CLionProjects/stm32f427-digital-potentiometer/lib/HAL/Include",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -106,6 +107,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/HAL/Include" />
+      <recent name="$PROJECT_DIR$/lib/HAL/Src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -129,7 +136,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752748357812</updated>
       <workItem from="1752748359409" duration="2755000" />
-      <workItem from="1752777032201" duration="2461000" />
+      <workItem from="1752777032201" duration="4103000" />
     </task>
     <servers />
   </component>

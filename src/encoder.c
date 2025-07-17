@@ -7,7 +7,7 @@
 #include "encoder.h"
 #include "system_config.h"
 
-static volatile int32_t encoderValue = 0;
+static volatile uint32_t encoderValue = 0;
 static volatile int32_t prevCounter = -1;
 
 /**
@@ -33,6 +33,9 @@ HAL_StatusTypeDef SetupEncoder() {
     if ((status = HAL_TIM_Encoder_Init(systemConfig.pTIMHandle, &encoderConfig)) != HAL_OK) return status;
     if ((status = HAL_TIM_Encoder_Start_IT(systemConfig.pTIMHandle, TIM_CHANNEL_ALL)) != HAL_OK) return status;
 
+    // Restore encoder value from backup register
+    encoderValue = HAL_RTCEx_BKUPRead(systemConfig.pRTCHandle, RTC_BKP_DR0);
+
     return HAL_OK;
 }
 
@@ -48,6 +51,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
         else if (diff < 0 && encoderValue - 1 >= ENCODER_MIN_VALUE) encoderValue--;
 
         printf("Encoder value: %ld\n", encoderValue);
+
+        // Write to backup register
+        HAL_RTCEx_BKUPWrite(systemConfig.pRTCHandle, RTC_BKP_DR0, encoderValue);
 
         prevCounter = counter;
     }

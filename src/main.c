@@ -28,9 +28,14 @@ TIM_HandleTypeDef htim2 = {
     }
 };
 
+RTC_HandleTypeDef hrtc = {
+    .Instance = RTC
+};
+
 System_Config_t systemConfig = {
     .pTIMHandle = &htim2,
-    .pUSARTHandle = &husart1
+    .pUSARTHandle = &husart1,
+    .pRTCHandle = &hrtc
 };
 
 int __io_putchar(int ch) {
@@ -48,6 +53,16 @@ int main(void) {
         HAL_Delay(1000);
         NVIC_SystemReset();
     }
+
+    // Enable access to backup registers
+    __HAL_RCC_PWR_CLK_ENABLE();
+
+    HAL_PWR_EnableBkUpAccess();
+    if (HAL_PWREx_EnableBkUpReg() != HAL_OK) {
+        TriggerError("Backup registers could not be accessed");
+        HAL_Delay(1000);
+        NVIC_SystemReset();
+    };
 
     // Init encoder
     if (SetupEncoder() != HAL_OK) {
