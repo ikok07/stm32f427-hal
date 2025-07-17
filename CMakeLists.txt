@@ -35,7 +35,8 @@ set (MFLOAT_ABI_MIX                   "Debug")
 #######################################################################
 
 ###################### VARIABLES ######################################
-set (PROJECT_NAME             "stm32f427-hal")
+set (CMAKE_BUILD_TYPE		  "Debug")
+set (PROJECT_NAME             "stm32f427-digital-potentiometer")
 set (PROJECT_TYPE             "exe")
 set (LINKER_SCRIPT            "../STM32F427ZGTX_FLASH.ld")
 set (MCPU                     "-mcpu=Cortex-M4")
@@ -71,6 +72,12 @@ set (PROJECT_DEFINES
 		# LIST COMPILER DEFINITIONS HERE
 		STM32F427xx
 )
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	set (DEBUG_DEFINES
+			USE_FULL_ASSERT
+	)
+endif()
 
 set (PROJECT_INCLUDES
 		# LIST INCLUDE DIRECTORIES HERE
@@ -116,7 +123,7 @@ elseif (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_STATIC_LIBRARY})
   add_library(${PROJECT_NAME} ${PROJECT_SOURCES})
 endif()
 
-add_compile_definitions (${PROJECT_DEFINES})
+add_compile_definitions (${PROJECT_DEFINES} ${DEBUG_DEFINES})
 include_directories (${PROJECT_INCLUDES})
 
 set (CMAKE_EXECUTABLE_SUFFIX ".elf")

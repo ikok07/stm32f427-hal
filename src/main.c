@@ -1,8 +1,12 @@
 
-#include "stm32f4xx_hal.h"
 #include <stdio.h>
 
-USART_HandleTypeDef husart = {
+#include "stm32f4xx_hal.h"
+#include "system_config.h"
+#include "encoder.h"
+#include "error.h"
+
+USART_HandleTypeDef husart1 = {
     .Instance = USART1,
     .Init = {
         .Mode = USART_MODE_TX,
@@ -13,29 +17,44 @@ USART_HandleTypeDef husart = {
     }
 };
 
+TIM_HandleTypeDef htim2 = {
+    .Instance = TIM2,
+    .Init = {
+        .AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE,
+        .ClockDivision = TIM_CLOCKDIVISION_DIV1,
+        .CounterMode = TIM_COUNTERMODE_UP,
+        .Period = ENCODER_TIM_ARR_VALUE - 1,
+        .Prescaler = 0x00
+    }
+};
+
+System_Config_t systemConfig = {
+    .pTIMHandle = &htim2,
+    .pUSARTHandle = &husart1
+};
+
 int __io_putchar(int ch) {
-    HAL_USART_Transmit(&husart, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
+    HAL_USART_Transmit(systemConfig.pUSARTHandle, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
     return ch;
 }
-
-#ifdef USE_FULL_ASSERT
-
-void assert_failed(uint8_t* file, uint32_t line) {
-    while (1);
-}
-
-#endif
 
 int main(void) {
     if (HAL_Init() != HAL_OK) {
         while (1);
     }
 
-    if (HAL_USART_Init(&husart) != HAL_OK) {
-        while (1);
+    if (HAL_USART_Init(systemConfig.pUSARTHandle) != HAL_OK) {
+        TriggerError(NULL);
+        HAL_Delay(1000);
+        NVIC_SystemReset();
     }
 
-    printf("Hello, World!\n");
+    // Init encoder
+    if (SetupEncoder() != HAL_OK) {
+        TriggerError("Encoder could not be initialized!");
+        HAL_Delay(1000);
+        NVIC_SystemReset();
+    };
 
-    return 0;
+    while (1);
 }
