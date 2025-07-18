@@ -12,11 +12,13 @@
 /* ---------- IRQ PRIORITIES ---------- */
 
 #define TIM2_IRQ_PRIORITY                   0
+#define EXTI2_IRQ_PRIORITY                  1
 
 typedef struct {
     TIM_HandleTypeDef *pTIMHandle;
     USART_HandleTypeDef *pUSARTHandle;
     RTC_HandleTypeDef *pRTCHandle;
+    DAC_HandleTypeDef *pDACHandle;
 } System_Config_t;
 
 extern System_Config_t systemConfig;

@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 
+#include "dac.h"
 #include "stm32f4xx_hal.h"
 #include "system_config.h"
 #include "encoder.h"
@@ -32,10 +33,15 @@ RTC_HandleTypeDef hrtc = {
     .Instance = RTC
 };
 
+DAC_HandleTypeDef hdac1 = {
+    .Instance = DAC1
+};
+
 System_Config_t systemConfig = {
     .pTIMHandle = &htim2,
     .pUSARTHandle = &husart1,
-    .pRTCHandle = &hrtc
+    .pRTCHandle = &hrtc,
+    .pDACHandle = &hdac1
 };
 
 int __io_putchar(int ch) {
@@ -50,7 +56,7 @@ int main(void) {
 
     if (HAL_USART_Init(systemConfig.pUSARTHandle) != HAL_OK) {
         TriggerError(NULL);
-        HAL_Delay(1000);
+        HAL_Delay(2000);
         NVIC_SystemReset();
     }
 
@@ -60,14 +66,21 @@ int main(void) {
     HAL_PWR_EnableBkUpAccess();
     if (HAL_PWREx_EnableBkUpReg() != HAL_OK) {
         TriggerError("Backup registers could not be accessed");
-        HAL_Delay(1000);
+        HAL_Delay(2000);
         NVIC_SystemReset();
     };
 
     // Init encoder
     if (SetupEncoder() != HAL_OK) {
         TriggerError("Encoder could not be initialized!");
-        HAL_Delay(1000);
+        HAL_Delay(2000);
+        NVIC_SystemReset();
+    };
+
+    // Init DAC
+    if (SetupDAC() != HAL_OK) {
+        TriggerError("Digital to analog converter could not be initialized!");
+        HAL_Delay(2000);
         NVIC_SystemReset();
     };
 

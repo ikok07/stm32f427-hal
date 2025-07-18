@@ -5,6 +5,8 @@
 #include <stdio.h>
 
 #include "encoder.h"
+
+#include "error.h"
 #include "system_config.h"
 
 static volatile uint32_t encoderValue = 0;
@@ -55,6 +57,17 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
         // Write to backup register
         HAL_RTCEx_BKUPWrite(systemConfig.pRTCHandle, RTC_BKP_DR0, encoderValue);
 
+        // Update DAC
+        if (HAL_DAC_SetValue(systemConfig.pDACHandle, DAC_CHANNEL_1, DAC_ALIGN_12B_R, encoderValue & 0xFFF) != HAL_OK) {
+            TriggerError("Failed to update DAC value!");
+            HAL_Delay(2000);
+            NVIC_SystemReset();
+        };
+
         prevCounter = counter;
     }
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+    encoderValue = 0;
 }

@@ -19,16 +19,23 @@ void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef *htim) {
             .Speed = GPIO_SPEED_FREQ_LOW
         };
 
-        // TX Pin
+        // TI1 Pin
         GPIO_Config.Pin = GPIO_PIN_0;
         HAL_GPIO_Init(GPIOA, &GPIO_Config);
 
-        // RX Pin
+        // TI2 Pin
         GPIO_Config.Pin = GPIO_PIN_1;
         HAL_GPIO_Init(GPIOA, &GPIO_Config);
 
+        // Reset Pin
+        GPIO_Config.Mode = GPIO_MODE_IT_RISING;
+        GPIO_Config.Pin = GPIO_PIN_2;
+        HAL_GPIO_Init(GPIOA, &GPIO_Config);
+
         // Setup NVIC
+        HAL_NVIC_SetPriority(EXTI2_IRQn, EXTI2_IRQ_PRIORITY, EXTI2_IRQ_PRIORITY);
         HAL_NVIC_SetPriority(TIM2_IRQn, TIM2_IRQ_PRIORITY, TIM2_IRQ_PRIORITY);
+        HAL_NVIC_EnableIRQ(EXTI2_IRQn);
         HAL_NVIC_EnableIRQ(TIM2_IRQn);
     }
 }
