@@ -25,21 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d362c2b-836b-4b2c-a12d-dcb648152caa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/TL074M.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/dac.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_dac.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_dac_ex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_dac.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/HAL/Src/stm32f4xx_hal_dac_ex.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dac.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/msp/dac_msp.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/MIC5205.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/TL072.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/system_config.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/system_config.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HAL/Include/stm32f4xx_hal_conf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/encoder.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/encoder.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/msp/tim_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/msp/tim_msp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stm32fxxx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/stm32fxxx_it.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/TL074M.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +124,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752748357812</updated>
       <workItem from="1752748359409" duration="2755000" />
-      <workItem from="1752777032201" duration="14259000" />
+      <workItem from="1752777032201" duration="21546000" />
     </task>
     <servers />
   </component>
